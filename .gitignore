@@ -5,3 +5,4 @@
 *.exe
 *.txt
 */rizla_test.go
+.idea

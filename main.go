@@ -14,7 +14,7 @@ import (
 	"time"
 
 	"github.com/kataras/golog"
-	"github.com/kataras/rizla/rizla"
+	"github.com/mj520/rizla/rizla"
 )
 
 const (
