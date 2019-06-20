@@ -5,7 +5,6 @@ import (
 	"errors"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"runtime"
 	"strconv"
 	"time"
@@ -186,7 +185,7 @@ func isDirectory(fullname string) bool {
 func buildProject(p *Project) error {
 
 	// relative := p.MainFile[len(p.dir)+1:len(p.MainFile)-3] + goExt
-	goBuild := exec.Command("go", "build", ".")
+	goBuild := exec.Command("go", "build", p.MainFile)
 	goBuild.Dir = p.dir
 	goBuild.Stdout = p.Out.Printer.Output
 	goBuild.Stderr = p.Err.Printer.Output
@@ -197,15 +196,14 @@ func runProject(p *Project) error {
 
 	// buildProject := p.MainFile[len(p.dir) : len(p.MainFile)-3] // with prepended slash
 
-	buildProject := filepath.Base(p.dir)
-
+	buildProject := p.AppName
 	if isWindows {
 		buildProject += ".exe"
 	}
 
 	// runCmd := exec.Command("."+buildProject, p.Args...)
 
-	runCmd := exec.Command("./"+buildProject, p.Args...)
+	runCmd := exec.Command(p.dir+"/"+buildProject, p.Args...)
 	runCmd.Dir = p.dir
 
 	if p.DisableProgramRerunOutput && p.i > 0 && p.proc != nil {
