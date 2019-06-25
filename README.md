@@ -7,14 +7,14 @@ Installation
 The only requirement is the [Go Programming Language](https://golang.org/dl), at least 1.7.
 
 ```sh
-$ go get -u github.com/kataras/rizla
+$ go get -u github.com/mj520/rizla
 ```
 
 
 # Getting Started
 
 ```bash
-$ rizla main.go #single project monitoring
+$ rizla main.go #export multi=true && rizla ... for multi main
 $ rizla C:/myprojects/project1/main.go C:/myprojects/project2/main.go #multi projects monitoring
 $ rizla -walk main.go #prepend '-walk' only when the default file changes scanning method doesn't works for you.
 $ rizla -delay=5s main.go # if delay > 0 then it delays the reload, also note that it accepts the first change but the rest of changes every "delay".
