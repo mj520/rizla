@@ -19,7 +19,7 @@ import (
 
 const (
 	// Version of rizla command line tool
-	Version = "0.1.1"
+	Version = "0.1.2"
 	// Name of rizla
 	Name = "Rizla"
 	// Description of rizla
@@ -75,9 +75,9 @@ func getOnReloadArg(arg string) (string, bool) {
 
 var helpTmpl = fmt.Sprintf(`NAME:
    %s - %s
-
+ENV multi false
 USAGE:
-   rizla main.go
+   rizla main.go #export multi=true && rizla ... for multi main
    rizla C:/myprojects/project1/main.go C:/myprojects/project2/main.go C:/myprojects/project3/main.go
    rizla -walk main.go [if -walk then rizla uses the stdlib's filepath.Walk method instead of file system's signals]
    rizla -delay=5s main.go [if delay > 0 then it delays the reload, also note that it accepts the first change but the rest of changes every "delay"]
