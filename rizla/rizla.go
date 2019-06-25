@@ -5,7 +5,6 @@ import (
 	"errors"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"runtime"
 	"strconv"
 	"time"
@@ -186,7 +185,7 @@ func isDirectory(fullname string) bool {
 func buildProject(p *Project) error {
 
 	// relative := p.MainFile[len(p.dir)+1:len(p.MainFile)-3] + goExt
-	goBuild := exec.Command("go", "build", ".")
+	goBuild := exec.Command("go", "build", p.MainFile)
 	if ok,_ := strconv.ParseBool(os.Getenv("multi"));ok {
 		goBuild = exec.Command("go", "build", p.MainFile)
 	}
